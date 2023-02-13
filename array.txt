@@ -1,0 +1,20 @@
+local Chat = game:GetService("Chat")
+
+local npc = script.Parent
+local characterParts = npc.CharacterParts
+local head = characterParts.Head
+local clickDetector = npc.ClickDetector
+
+--Add table below
+local dialogoArray = {"Eae ja adquiriu o curso da bju's?","Então corra pra adquirir","Parabens agora vc ser um belo programador"}
+local arrayIndex  = 1 
+local function speak()
+	local dialogue = dialogoArray[arrayIndex]
+	Chat:Chat(head, dialogue)
+	if arrayIndex == #dialogoArray then
+		arrayIndex = 1
+	end
+	arrayIndex += 1
+end
+
+clickDetector.MouseClick:Connect(speak)
